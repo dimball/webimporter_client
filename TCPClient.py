@@ -14,8 +14,10 @@ def recvall(sock):
     data = ""
     part = None
     while part != "":
-        part = sock.recv(4096).decode('utf8')
+        part = sock.recv(1024).decode('utf8')
         data += part
+        if part == "":
+            break
     return data
 
 def client(string):
@@ -263,13 +265,13 @@ if __name__ == "__main__":
 # #    removeincompletetasks()
 #     create_copytask()
 
-    create_copytask()
+    #create_copytask()
     #create_copytask()
     #create_copytask()
 
     #time.sleep(2)
     #modify(0)
-    startqueue()
+    #startqueue()
     # time.sleep(2)
     # # # start_task(0)
     # #start_task(0)
@@ -285,7 +287,7 @@ if __name__ == "__main__":
     #pausequeue()
 
     #resumequeue()
-    #restart_tasks()
+    restart_tasks()
     #aJobs = client(CreateData('get_tasks',0))
     #print(aJobs)
     #removeincompletetasks()
