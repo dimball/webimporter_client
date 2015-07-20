@@ -5,6 +5,7 @@ import time
 import select
 import json
 import os
+import random
 try:
     import xml.etree.cElementTree as ET
 except ImportError:
@@ -78,7 +79,7 @@ def create_copytask():
     client(CreateData('create_copytask',aPayload))
 def modify_task(slot):
     dJobs = client(CreateData('get_tasks',0))
-    JobList = ['c:/Data1']
+    JobList = ['c:/Data3']
     aPayload = []
     if dJobs != None:
         dJobs = json.loads(dJobs)
@@ -253,6 +254,26 @@ def modify(slot):
                 response = client(CreateData('modify_task',data))
         else:
             print("no jobs on server")
+def setpriority(prioritylist):
+    dJobs = client(CreateData('get_tasks',0))
+    if dJobs != None:
+        aJobs = json.loads(dJobs)
+        aJobs = aJobs["job"]
+        if len(aJobs)>0:
+            print("Current Jobs:")
+            counter = 0
+            for job in aJobs:
+                print(str(counter) + ":" + job)
+                counter += 1
+            r = random.random()
+            random.shuffle(aJobs, lambda: r)
+            print("Sending jobs:")
+            counter = 0
+            for job in aJobs:
+                print(str(counter) + ":" + job)
+                counter += 1
+
+    client(CreateData('set_priority',aJobs))
 def shutdown():
     client(CreateData('shutdown_server',0))
 
@@ -268,28 +289,33 @@ if __name__ == "__main__":
     #create_copytask()
     #create_copytask()
     #create_copytask()
-
+    #create_copytask()
     #time.sleep(2)
     #modify(0)
+    #restart_tasks()
     #startqueue()
-    # time.sleep(2)
-    # # # start_task(0)
-    # #start_task(0)
-    # #start_task(1)
+    #time.sleep(5)
+    # # # # start_task(0)
+    # # #start_task(0)
+    # # #start_task(1)
     #pausequeue()
-    # # pause(0)
-    # # pause(1)
-    # # pause(2)
+    # # # pause(0)
+    # # # pause(1)
+    # # # pause(2)
+    # #
+    # time.sleep(3)
+    # # # #resume(0)
+    # # #resume(1)
+    # #pausequeue()
     #
-    # time.sleep(2)
-    # # #resume(0)
+    # resumequeue()
+    # time.sleep(3)
+    # pausequeue()
     # #resume(1)
-    #pausequeue()
-
-    #resumequeue()
-    restart_tasks()
-    #aJobs = client(CreateData('get_tasks',0))
-    #print(aJobs)
-    #removeincompletetasks()
-    CheckStatus()
+    # #aJobs = client(CreateData('get_tasks',0))
+    # #print(aJobs)
+    # #removeincompletetasks()
+    #modify(3)
+    #setpriority([])
+    #CheckStatus()
     shutdown()
