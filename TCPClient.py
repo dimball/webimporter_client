@@ -282,7 +282,7 @@ def deactivate_queue():
 def put_tasks_on_queue():
     client(CreateData('/webimporter/v1/queue/put_tasks'))
 if __name__ == "__main__":
-    # create_copytask()
+    create_copytask()
     # create_copytask()
     # create_copytask()
     # startqueue()
@@ -342,4 +342,4 @@ if __name__ == "__main__":
 
     #CheckStatus()
 
-    shutdown()
+    #shutdown()
