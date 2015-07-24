@@ -271,7 +271,7 @@ def setpriority(prioritylist):
                 print(str(counter) + ":" + job)
                 counter += 1
 
-    client(CreateData('/webimporter/v1/queue/set_priority', aJobs))
+    client(CreateData('/webimporter/v1/global/queue/set_priority', aJobs))
 def shutdown():
     client(CreateData('/webimporter/v1/server/shutdown'))
 
@@ -282,20 +282,21 @@ def deactivate_queue():
 def put_tasks_on_queue():
     client(CreateData('/webimporter/v1/queue/put_tasks'))
 if __name__ == "__main__":
-    create_copytask()
-    # create_copytask()
+    #create_copytask()
+    #create_copytask()
     # create_copytask()
     # startqueue()
     # put_tasks_on_queue()
     # activate_queue()
-    #deactivate_queue()
+    # #deactivate_queue()
     # time.sleep(5)
-    #pausequeue()
-
-    #resumequeue()
-
-    #setpriority([])
-
+    # #pausequeue()
+    #
+    # #resumequeue()
+    #
+    # setpriority([])
+    # time.sleep(2)
+    # setpriority([])
     #deactivate_queue()
     #removeincompletetasks()
     #removecompleted()
@@ -340,6 +341,6 @@ if __name__ == "__main__":
     #modify(3)
 
 
-    #CheckStatus()
+    CheckStatus()
 
     #shutdown()
